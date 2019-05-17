@@ -1,0 +1,19 @@
+{
+  "name": "minimal-xml-parser",
+  "version": "0.0.1",
+  "description": "A simple XML parser with minimal capabilities",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/etr"
+  },
+  "author": "Jeffrey Hunter <jeff@missioncriticallabs.com>",
+  "license": "UNLICENSED",
+  "private": true,
+  "devDependencies": {
+    "expressive-test": "../expressive-test",
+    "chai": "^4.1.2"
+  },
+  "dependencies": {
+    "minimal-dom": "../minimal-dom"
+  }
+}
