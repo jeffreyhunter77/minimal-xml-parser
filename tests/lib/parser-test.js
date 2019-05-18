@@ -483,6 +483,14 @@ describe(Parser, () => {
 
         });
 
+        context('with a declaration containing parameter entities', () => {
+
+          prop('input', '<!DOCTYPE html [<!ELEMENT %name.para; %content.para; >]>\n<html>\n</html>');
+
+          itReturnsTheDocumentElement();
+
+        });
+
       });
 
     });
