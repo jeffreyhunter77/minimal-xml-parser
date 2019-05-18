@@ -370,6 +370,144 @@ describe(Parser, () => {
 
     });
 
+    context('with multiple elements', () => {
+
+      prop('input', '<br id="a" /><br id="b" /><br id="c" />');
+
+      it('returns all of the elements', function() {
+        expect(this.result.length).to.equal(3);
+      });
+
+    });
+
+    context('with multiple elements separated by extra space', () => {
+
+      prop('input', '  <br id="a" />\n  <br id="b" />\n  <br id="c" />\n');
+
+      it('returns all of the elements', function() {
+        expect(this.result.length).to.equal(3);
+      });
+
+    });
+
+    context('with a document prolog', () => {
+
+      prop('input', '<?xml version="1.0"?>\n<!DOCTYPE html>\n<html>\n</html>');
+
+      function itReturnsTheDocumentElement() {
+
+        it('returns the document element', function() {
+          expect(this.result.length).to.equal(1);
+          expect(this.result[0].tagName).to.equal('html');
+        });
+
+      }
+
+      itReturnsTheDocumentElement();
+
+      context('with a doctype containing an external sytem id', () => {
+
+        prop('input', '<!DOCTYPE html SYSTEM "strict.dtd">\n<html>\n</html>');
+
+        itReturnsTheDocumentElement();
+
+      });
+
+      context('with a doctype containing an external public id', () => {
+
+        prop('input', '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" \'http://www.w3.org/TR/html4/strict.dtd\'>\n<html>\n</html>');
+
+        itReturnsTheDocumentElement();
+
+      });
+
+      context('with a doctype containing an internal subset', () => {
+
+        prop('input', '<!DOCTYPE html [ %HTML.Frameset; ] >\n<html>\n</html>');
+
+        itReturnsTheDocumentElement();
+
+        context('with a comment in the internal subset', () => {
+
+          prop('input', '<!DOCTYPE html [ <!-- a comment --><!-- another --> ]>\n<html>\n</html>');
+
+          itReturnsTheDocumentElement();
+
+        });
+
+        context('with a processing instruction in the internal subset', () => {
+
+          prop('input', '<!DOCTYPE html [ <?custom-pi?> ]>\n<html>\n</html>');
+
+          itReturnsTheDocumentElement();
+
+        });
+
+        context('with a notation in the internal subset', () => {
+
+          prop('input', '<!DOCTYPE html [<!NOTATION jpg PUBLIC "JPG 1.0">]>\n<html>\n</html>');
+
+          itReturnsTheDocumentElement();
+
+        });
+
+        context('with an entity declaration in the internal subset', () => {
+
+          prop('input', '<!DOCTYPE html [<!ENTITY % HTML.Frameset "IGNORE">]>\n<html>\n</html>');
+
+          itReturnsTheDocumentElement();
+
+        });
+
+        context('with an attribute list declaration in the internal subset', () => {
+
+          prop('input', '<!DOCTYPE html [<!ATTLIST BR\nid ID #IMPLIED\nclass CDATA #IMPLIED >]>\n<html>\n</html>');
+
+          itReturnsTheDocumentElement();
+
+        });
+
+        context('with an element declaration in the internal subset', () => {
+
+          prop('input', '<!DOCTYPE html [<!ELEMENT br EMPTY>]>\n<html>\n</html>');
+
+          itReturnsTheDocumentElement();
+
+        });
+
+        context('with a element declaration containing a child content spec in the internal subset', () => {
+
+          prop('input', '<!DOCTYPE html [<!ELEMENT div1 (head, (p | list | note)*, div2*)>]>\n<html>\n</html>');
+
+          itReturnsTheDocumentElement();
+
+        });
+
+      });
+
+    });
+
+    context('with valid trailing miscellaneous content', () => {
+
+      prop('input', '<html>\n</html>\n<!-- the end -->');
+
+      it('returns the document element', function() {
+        expect(this.result.length).to.equal(1);
+        expect(this.result[0].tagName).to.equal('html');
+      });
+
+    });
+
+    context('with invalid unparsed content', () => {
+
+      prop('input', '<html>\n</html>\nthe end!');
+
+      it('throws a syntax error', function() {
+        expect(() => this.result).to.throw(XMLSyntaxError);
+      });
+
+    });
+
   });
 
 });
