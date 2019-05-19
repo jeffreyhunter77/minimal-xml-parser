@@ -11,9 +11,8 @@
   "private": true,
   "devDependencies": {
     "expressive-test": "../expressive-test",
+    "minimal-dom": "../minimal-dom",
     "chai": "^4.1.2"
   },
-  "dependencies": {
-    "minimal-dom": "../minimal-dom"
-  }
+  "dependencies": {}
 }
