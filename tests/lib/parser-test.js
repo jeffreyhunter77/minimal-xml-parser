@@ -13,7 +13,18 @@ describe(Parser, () => {
 
   describe('.parse()', () => {
 
-    prop('result', function() { return this.parser.parse(); }, MEMOIZE);
+    prop('resultContainer', function() { return this.parser.parse(); }, MEMOIZE);
+    prop('result',          function() { return this.resultContainer.childNodes; }, MEMOIZE);
+
+    context('without a document prolog', () => {
+
+      prop('input', '<div>.</div>');
+
+      it('returns the result inside a document fragment', function() {
+        expect(this.resultContainer.nodeType).to.equal(Node.DOCUMENT_FRAGMENT_NODE);
+      });
+
+    });
 
     context('with an empty element tag', () => {
 
