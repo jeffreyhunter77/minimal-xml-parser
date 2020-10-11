@@ -7,11 +7,20 @@
     "test": "etr"
   },
   "author": "Jeffrey Hunter <jeff@missioncriticallabs.com>",
-  "license": "UNLICENSED",
-  "private": true,
+  "license": "MIT",
+  "private": false,
+  "keywords": [
+    "xml",
+    "parser",
+    "dom"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jeffreyhunter77/minimal-xml-parser.git"
+  },
   "devDependencies": {
     "expressive-test": "^0.0.2",
-    "minimal-dom": "../minimal-dom"
+    "minimal-dom": "jeffreyhunter77/minimal-dom"
   },
   "dependencies": {}
 }
