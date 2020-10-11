@@ -8,13 +8,13 @@ var Parser = require('../../lib/parser')
 
 describe(Parser, () => {
 
-  prop('doc',    function() { return new Document(); }, MEMOIZE);
-  prop('parser', function() { return new Parser(this.input, this.doc); }, MEMOIZE);
+  prop('doc',    function() { return new Document(); });
+  prop('parser', function() { return new Parser(this.input, this.doc); });
 
   describe('.parse()', () => {
 
-    prop('resultContainer', function() { return this.parser.parse(); }, MEMOIZE);
-    prop('result',          function() { return this.resultContainer.childNodes; }, MEMOIZE);
+    prop('resultContainer', function() { return this.parser.parse(); });
+    prop('result',          function() { return this.resultContainer.childNodes; });
 
     context('without a document prolog', () => {
 
@@ -200,7 +200,7 @@ describe(Parser, () => {
     context('with an element containing text content', () => {
 
       prop('input', '<strong>bold!</strong>');
-      prop('child', function() { return this.result[0].firstChild; }, MEMOIZE);
+      prop('child', function() { return this.result[0].firstChild; });
 
       it('returns a single result', function() {
         expect(this.result.length).to.equal(1);
@@ -267,7 +267,7 @@ describe(Parser, () => {
     context('with an element containing another element', () => {
 
       prop('input', '<strong><br /></strong>');
-      prop('child', function() { return this.result[0].firstChild; }, MEMOIZE);
+      prop('child', function() { return this.result[0].firstChild; });
 
       it('returns a single result', function() {
         expect(this.result.length).to.equal(1);
