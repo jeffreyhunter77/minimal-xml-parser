@@ -4,15 +4,14 @@
   "description": "A simple XML parser with minimal capabilities",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/etr"
+    "test": "etr"
   },
   "author": "Jeffrey Hunter <jeff@missioncriticallabs.com>",
   "license": "UNLICENSED",
   "private": true,
   "devDependencies": {
-    "expressive-test": "../expressive-test",
-    "minimal-dom": "../minimal-dom",
-    "chai": "^4.1.2"
+    "expressive-test": "^0.0.2",
+    "minimal-dom": "../minimal-dom"
   },
   "dependencies": {}
 }
