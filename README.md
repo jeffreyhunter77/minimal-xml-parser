@@ -101,8 +101,8 @@ try {
 
 `XMLSyntaxError` is an `Error` class, instances of which are thrown when the parser encounters an error. Its message contains a full description of the error. It also provides the following properties:
 
- * `fileName`: **String** The name of the source that produced the error.
- * `lineNumber`: **Number** The line number where the error occurred
+ * `sourceName`: **String** The name of the source that produced the error.
+ * `line`: **Number** The line number where the error occurred
  * `column`: **Number** The offset in characters on the line where the error occurred.
  * `expected`: **String** A token or description of what was expected next for valid XML.
  * `actual`: **String** The value that was encountered.
