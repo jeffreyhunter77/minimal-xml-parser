@@ -2,7 +2,7 @@
 
 This is a simple XML parser. It does no validation beyond requiring the input to be well-formed.
 
-It produces its output as a DOM Document Fragment. The user is required to supply the DOM implementation. Any implementation that conforms for [DOM (Core) Level 1](https://www.w3.org/TR/REC-DOM-Level-1/level-one-core.html) may be used. [minimal-dom](https://github.com/jeffreyhunter77/minimal-dom) is one such implementation.
+It produces its output as a DOM Document Fragment. The user is required to supply the DOM implementation. Any implementation that conforms to [DOM (Core) Level 1](https://www.w3.org/TR/REC-DOM-Level-1/level-one-core.html) may be used. [minimal-dom](https://github.com/jeffreyhunter77/minimal-dom) is one such implementation.
 
 ## Installation
 
