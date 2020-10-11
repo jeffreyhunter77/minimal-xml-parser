@@ -20,7 +20,7 @@
   },
   "devDependencies": {
     "expressive-test": "^0.0.2",
-    "minimal-dom": "jeffreyhunter77/minimal-dom"
+    "minimal-dom": "^0.1.0"
   },
   "dependencies": {}
 }
